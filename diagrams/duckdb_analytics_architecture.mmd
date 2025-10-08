@@ -1,0 +1,23 @@
+graph TD
+    subgraph DuckDB Embedded Analytics Engine
+        A[Data Sources] --> B(DuckDBAnalytics Class)
+        B --> C{DuckDB In-Memory Database}
+        C --> D[Data Ingestion]
+        C --> E[SQL Query Execution]
+        C --> F[Data Transformation]
+        C --> G[Metadata Management]
+        D --> C
+        E --> H[Results/Reports]
+        F --> H
+        G --> H
+    end
+
+    style A fill:#afa,stroke:#333,stroke-width:2px
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#ccf,stroke:#333,stroke-width:2px
+    style E fill:#ffc,stroke:#333,stroke-width:2px
+    style F fill:#afa,stroke:#333,stroke-width:2px
+    style G fill:#f9f,stroke:#333,stroke-width:2px
+    style H fill:#bbf,stroke:#333,stroke-width:2px
+
