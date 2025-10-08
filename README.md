@@ -27,13 +27,7 @@ O principal objetivo deste projeto é **fornecer exemplos práticos, código fun
 - **Testes Incluídos**: Módulos de código validados através de testes unitários e de integração, garantindo a robustez e a confiabilidade das soluções propostas.
 - **Abordagem Didática**: Conteúdo apresentado de forma didática, ideal para aprendizado e referência, com explicações claras sobre os conceitos e a aplicação prática.
 
-### 📊 Visualização
 
-![DuckDB Embedded Analytics](images/duckdb_embedded_analytics_engine.png)
-
-*Diagrama ilustrativo do fluxo de trabalho com DuckDB para analytics embarcado, mostrando a integração com diferentes fontes de dados e aplicações.*
-
----
 
 ## 🇬🇧 Embedded Analytics Engine with DuckDB
 
