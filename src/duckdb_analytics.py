@@ -112,6 +112,13 @@ class DuckDBAnalytics:
             print(f"✗ Erro ao ingerir CSV para \'{table_name}\' de \'{file_path}\' : {e}")
             return False
 
+    def import_from_csv(self, file_path: str, table_name: str, create_table: bool = True) -> bool:
+        """
+        Alias para ingest_csv() para manter compatibilidade com a documentação.
+        Ingere dados de um arquivo CSV para uma tabela DuckDB.
+        """
+        return self.ingest_csv(file_path, table_name, create_table)
+
     def ingest_parquet(self, file_path: str, table_name: str, create_table: bool = True) -> bool:
         """
         Ingere dados de um arquivo Parquet para uma tabela DuckDB.
@@ -186,7 +193,7 @@ class DuckDBAnalytics:
         if not self.conn:
             return False
         try:
-            self.conn.execute(f"COPY ({query}) TO \'{output_file}\' (HEADER, DELIMITER \\',\\')")
+            self.conn.execute(f"COPY ({query}) TO \'{output_file}\' (HEADER, DELIMITER \',\')")
             print(f"✓ Dados exportados para \'{output_file}\' com sucesso.")
             return True
         except duckdb.Error as e:
@@ -282,12 +289,13 @@ if __name__ == "__main__":
         f.write("4,Monitor,300.00,C003,2025-01-04\n")
 
     sample_json_path = os.path.join(data_dir, "sample_customers.json")
+    import json
     with open(sample_json_path, "w") as f:
-        f.write("[
-  {\"customer_id\": \"C001\", \"name\": \"Alice\", \"city\": \"NY\"},
-  {\"customer_id\": \"C002\", \"name\": \"Bob\", \"city\": \"LA\"},
-  {\"customer_id\": \"C003\", \"name\": \"Charlie\", \"city\": \"NY\"}
-]")
+        json.dump([
+            {"customer_id": "C001", "name": "Alice", "city": "NY"},
+            {"customer_id": "C002", "name": "Bob", "city": "LA"},
+            {"customer_id": "C003", "name": "Charlie", "city": "NY"}
+        ], f)
 
     # Criar um DataFrame Pandas e salvar como Parquet
     df_products = pd.DataFrame({

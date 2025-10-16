@@ -1,0 +1,11 @@
+transaction_id,product,amount,customer_id,sale_date,region
+1,Laptop,1200.00,C001,2025-01-01,North
+2,Mouse,25.00,C002,2025-01-02,South
+3,Keyboard,75.00,C001,2025-01-03,East
+4,Laptop,1500.00,C003,2025-01-04,North
+5,Monitor,300.00,C004,2025-01-05,West
+6,Mouse,30.00,C002,2025-01-05,North
+7,Keyboard,80.00,C005,2025-01-06,South
+8,Laptop,1350.00,C001,2025-01-07,East
+9,Monitor,350.00,C003,2025-01-08,West
+10,Mouse,28.00,C004,2025-01-09,North

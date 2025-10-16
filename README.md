@@ -3,8 +3,10 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![DuckDB](https://img.shields.io/badge/Database-DuckDB-orange?style=for-the-badge&logo=duckdb&logoColor=white)
 ![Pandas](https://img.shields.io/badge/DataFrames-Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-orange?style=for-the-badge&logo=mermaid&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
+
+[![Tests](https://github.com/galafis/duckdb-embedded-analytics-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/galafis/duckdb-embedded-analytics-engine/actions/workflows/tests.yml)
 
 ---
 
@@ -79,12 +81,14 @@ The main objective of this project is to **provide practical examples, functiona
 
 | Categoria         | Tecnologia      | Descrição                                                                 |
 | :---------------- | :-------------- | :------------------------------------------------------------------------ |
-| **Linguagem**     | Python          | Linguagem principal para desenvolvimento da interface com DuckDB.         |
+| **Linguagem**     | Python 3.9+     | Linguagem principal para desenvolvimento da interface com DuckDB.         |
 | **Banco de Dados**| DuckDB          | Motor de banco de dados OLAP embarcado de alta performance.               |
 | **DataFrames**    | Pandas          | Biblioteca para manipulação e análise de dados em Python.                 |
 | **Serialização**  | CSV, JSON, Parquet | Formatos de arquivo suportados para ingestão e exportação de dados.       |
-| **Testes**        | `unittest`      | Framework de testes padrão do Python para validação de funcionalidades.   |
-| **Diagramação**   | Mermaid         | Para criação de diagramas de arquitetura e fluxo de dados no README.      |
+| **Parquet Support**| PyArrow        | Biblioteca para leitura/escrita de arquivos Parquet.                      |
+| **Testes**        | pytest          | Framework moderno de testes para Python com cobertura de código.          |
+| **CI/CD**         | GitHub Actions  | Integração contínua e entrega automatizada.                               |
+| **Geração de Dados** | Faker        | Biblioteca para geração de dados sintéticos para testes.                  |
 
 ---
 
@@ -93,15 +97,34 @@ The main objective of this project is to **provide practical examples, functiona
 ```
 duckdb-embedded-analytics-engine/
 ├── src/
+│   ├── __init__.py              # Package initialization
+│   ├── duckdb_analytics.py      # Main DuckDB analytics class
+│   └── advanced_example.py      # Advanced usage examples with synthetic data
+├── data/
+│   └── examples/                # Example data files (CSV, JSON, Parquet)
+├── docs/                        # Comprehensive documentation
+│   ├── getting_started.md       # Getting started guide
+│   ├── api_reference.md         # Complete API documentation
+│   └── use_cases.md             # Real-world use cases and examples
+├── tests/                       # Unit and integration tests
 │   ├── __init__.py
-│   └── duckdb_analytics.py      # Lógica principal para interação com DuckDB
-├── data/                        # Dados de exemplo (CSV, JSON, Parquet) para análise
-├── images/                      # Imagens e diagramas para o README e documentação
-├── tests/                       # Testes unitários e de integração
-├── docs/                        # Documentação adicional, tutoriais e guias de uso
-├── scripts/                     # Scripts utilitários para automação e configuração
-├── requirements.txt             # Dependências Python
-└── README.md                    # Este arquivo
+│   ├── test_duckdb_analytics.py # Unit tests
+│   └── test_integration.py      # Integration tests
+├── scripts/                     # Utility scripts
+│   ├── setup.py                 # Project setup script
+│   ├── generate_data.py         # Sample data generator
+│   └── run_tests.py             # Test runner with coverage
+├── .github/
+│   └── workflows/
+│       └── tests.yml            # GitHub Actions CI/CD workflow
+├── diagrams/                    # Architecture diagrams
+├── images/                      # Images and screenshots
+├── .gitignore                   # Git ignore configuration
+├── requirements.txt             # Python dependencies
+├── LICENSE                      # MIT License
+├── CONTRIBUTING.md              # Contribution guidelines
+├── CODE_OF_CONDUCT.md           # Code of conduct
+└── README.md                    # This file
 ```
 
 ---
@@ -118,11 +141,29 @@ Para começar, clone o repositório e explore os diretórios `src/` e `docs/` pa
 ### Instalação
 
 ```bash
-git clone https://github.com/GabrielDemetriosLafis/duckdb-embedded-analytics-engine.git
+git clone https://github.com/galafis/duckdb-embedded-analytics-engine.git
 cd duckdb-embedded-analytics-engine
 
 # Instalar dependências Python
 pip install -r requirements.txt
+
+# Executar script de setup (opcional)
+python scripts/setup.py
+```
+
+### Executar Testes
+
+```bash
+# Executar todos os testes
+pytest tests/ -v
+
+# Executar testes com cobertura
+pytest tests/ --cov=src --cov-report=term-missing --cov-report=html
+
+# Ver relatório de cobertura HTML
+open htmlcov/index.html  # macOS/Linux
+# ou
+start htmlcov/index.html  # Windows
 ```
 
 ### Exemplo de Uso Avançado (Python)
@@ -274,16 +315,169 @@ if __name__ == "__main__":
 
 ---
 
+## 📚 Documentação
+
+Para documentação completa, consulte:
+
+- **[Getting Started Guide](docs/getting_started.md)** - Guia de início rápido com exemplos básicos
+- **[API Reference](docs/api_reference.md)** - Documentação completa da API
+- **[Use Cases](docs/use_cases.md)** - Casos de uso do mundo real com implementações completas
+
+## 🧪 Testes e Cobertura
+
+O projeto possui cobertura de testes abrangente:
+
+- ✅ 15 testes unitários e de integração
+- ✅ Cobertura de código > 75%
+- ✅ CI/CD automatizado com GitHub Actions
+- ✅ Testes em Python 3.9, 3.10, 3.11 e 3.12
+
+### Executar Testes Localmente
+
+```bash
+# Testes básicos
+pytest tests/ -v
+
+# Com cobertura detalhada
+pytest tests/ --cov=src --cov-report=term-missing --cov-report=html
+
+# Teste específico
+pytest tests/test_duckdb_analytics.py::TestDuckDBAnalytics::test_ingest_csv -v
+```
+
+## 🎯 Casos de Uso
+
+### Business Intelligence
+Crie dashboards de BI leves sem necessidade de servidor de banco de dados.
+
+### Data Science
+Integre análises SQL diretamente em notebooks Jupyter.
+
+### ETL Pipelines
+Processe e transforme dados localmente antes de enviar para o data warehouse.
+
+### IoT Analytics
+Analise dados de sensores localmente antes de enviar para a nuvem.
+
+### Mobile Apps
+Análises offline embarcadas em aplicativos móveis.
+
+Veja [Use Cases](docs/use_cases.md) para implementações completas.
+
+## 🚀 Funcionalidades Principais
+
+### ✨ Ingestão Multi-Formato
+- CSV, JSON e Parquet
+- Importação direta sem conversões
+- Suporte a grandes volumes de dados
+
+### 📊 Consultas SQL Avançadas
+- SQL ANSI completo
+- Window functions
+- CTEs (Common Table Expressions)
+- Joins complexos
+
+### 🔄 Integração Pandas
+- Conversão bidirecional DataFrame ↔ DuckDB
+- Zero-copy quando possível
+- Performance otimizada
+
+### 💾 Gerenciamento de Metadados
+- Rastreamento de esquemas
+- Histórico de criação
+- Informações de fonte de dados
+
+### 🛠️ Utilitários
+- Criação de views
+- Exportação para CSV
+- Execução de scripts SQL
+- Otimização de banco de dados
+
+## 🔧 Scripts Utilitários
+
+O projeto inclui scripts úteis no diretório `scripts/`:
+
+- **setup.py** - Configura o ambiente e verifica dependências
+- **generate_data.py** - Gera dados sintéticos para testes
+- **run_tests.py** - Executa testes com relatório de cobertura
+
+```bash
+# Setup inicial
+python scripts/setup.py
+
+# Gerar dados de exemplo
+python scripts/generate_data.py
+
+# Executar testes completos
+python scripts/run_tests.py
+```
+
+## 📊 Performance
+
+DuckDB oferece performance excepcional para queries analíticas:
+
+- **10-100x mais rápido** que SQLite em queries analíticas
+- **Processamento vetorizado** para máxima eficiência
+- **Armazenamento colunar** otimizado para agregações
+- **Zero overhead** de rede (in-process)
+
 ## 🤝 Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou sugerir melhorias. Por favor, siga as diretrizes de contribuição.
+Contribuições são bem-vindas! 🎉
 
----
+1. Leia o [Guia de Contribuição](CONTRIBUTING.md)
+2. Leia o [Código de Conduta](CODE_OF_CONDUCT.md)
+3. Fork o projeto
+4. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
+5. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+6. Push para a branch (`git push origin feature/AmazingFeature`)
+7. Abra um Pull Request
+
+## 🐛 Reportar Bugs
+
+Encontrou um bug? Por favor, abra uma [issue](https://github.com/galafis/duckdb-embedded-analytics-engine/issues) com:
+
+- Descrição clara do problema
+- Passos para reproduzir
+- Comportamento esperado vs observado
+- Versão do Python e sistema operacional
+
+## 💡 Sugestões
+
+Tem uma ideia para melhorar o projeto? Adoraríamos ouvir!
+
+Abra uma [issue](https://github.com/galafis/duckdb-embedded-analytics-engine/issues) com a tag `enhancement`.
 
 ## 📝 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
+## 🌟 Agradecimentos
+
+- [DuckDB](https://duckdb.org/) - Pelo excelente banco de dados OLAP embarcado
+- [Pandas](https://pandas.pydata.org/) - Pela biblioteca de manipulação de dados
+- [PyArrow](https://arrow.apache.org/docs/python/) - Pelo suporte a Parquet
+- Todos os contribuidores que ajudaram a melhorar este projeto
+
+## 📧 Contato
+
+**Autor:** Gabriel Demetrios Lafis  
+**Ano:** 2025  
+**GitHub:** [@galafis](https://github.com/galafis)
+
+## 🔗 Links Úteis
+
+- [DuckDB Documentation](https://duckdb.org/docs/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Python Testing with pytest](https://docs.pytest.org/)
+- [GitHub Actions](https://docs.github.com/en/actions)
+
 ---
 
-**Autor:** Gabriel Demetrios Lafis  \n**Ano:** 2025
+<div align="center">
+
+**Se este projeto foi útil, considere dar uma ⭐ no GitHub!**
+
+[⬆ Voltar ao topo](#embedded-analytics-engine-with-duckdb)
+
+</div>

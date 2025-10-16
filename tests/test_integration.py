@@ -29,17 +29,13 @@ class TestDuckDBAnalyticsIntegration(unittest.TestCase):
 
         self.sample_json_path = os.path.join(self.test_data_dir, "sample_customers_integration.json")
         with open(self.sample_json_path, "w") as f:
-            f.write("[
-  {\"customer_id\": \"C001\", \"name\": \"Alice\", \"city\": \"NY\"},
-  {\"customer_id\": \"C002\", \"name\": \"Bob\", \"city\": \"LA\"},
-  {\"customer_id\": \"C003\", \"name\": \"Charlie\", \"city\": \"NY\"}
-]")
+            f.write('[{"customer_id": "C001", "name": "Alice", "city": "NY"}, {"customer_id": "C002", "name": "Bob", "city": "LA"}, {"customer_id": "C003", "name": "Charlie", "city": "NY"}]')
 
         self.sample_parquet_path = os.path.join(self.test_data_dir, "sample_products_integration.parquet")
         df_products = pd.DataFrame({
-            "product_id": ["P1", "P2", "P3"],
-            "product_name": ["Laptop", "Mouse", "Keyboard"],
-            "category": ["Electronics", "Electronics", "Peripherals"]
+            "product_id": ["P1", "P2", "P3", "P4"],
+            "product_name": ["Laptop", "Mouse", "Keyboard", "Monitor"],
+            "category": ["Electronics", "Electronics", "Peripherals", "Electronics"]
         })
         df_products.to_parquet(self.sample_parquet_path, index=False)
 
@@ -70,7 +66,6 @@ class TestDuckDBAnalyticsIntegration(unittest.TestCase):
 
         # 4. Criar uma view complexa unindo as tabelas
         join_query = """
-            CREATE OR REPLACE VIEW sales_customer_product_view AS
             SELECT
                 s.transaction_id,
                 s.product,
@@ -81,15 +76,15 @@ class TestDuckDBAnalyticsIntegration(unittest.TestCase):
                 p.category AS product_category
             FROM sales_data AS s
             JOIN customers_data AS c ON s.customer_id = c.customer_id
-            JOIN products_data AS p ON s.product = p.product_name;
+            JOIN products_data AS p ON s.product = p.product_name
         """
-        self.assertTrue(self.analytics.execute_query(join_query))
+        self.assertTrue(self.analytics.create_view("sales_customer_product_view", join_query))
         self.assertIn("sales_customer_product_view", self.analytics.list_metadata())
 
         # 5. Consultar a view e verificar os resultados
         result_df = self.analytics.fetch_data("SELECT * FROM sales_customer_product_view WHERE customer_city = 'NY'")
         self.assertIsInstance(result_df, pd.DataFrame)
-        self.assertEqual(len(result_df), 2) # C001 (Laptop, Keyboard) and C003 (Monitor)
+        self.assertEqual(len(result_df), 3) # C001 (Laptop, Keyboard) and C003 (Monitor)
         self.assertTrue(all(result_df["customer_city"] == "NY"))
         self.assertIn("Laptop", result_df["product"].values)
         self.assertIn("Keyboard", result_df["product"].values)
@@ -97,14 +92,13 @@ class TestDuckDBAnalyticsIntegration(unittest.TestCase):
 
         # 6. Criar uma tabela a partir de uma query agregada
         agg_query = """
-            CREATE TABLE daily_sales_summary AS
             SELECT
                 sale_date,
                 SUM(amount) AS total_daily_sales,
                 COUNT(DISTINCT transaction_id) AS num_transactions
             FROM sales_data
             GROUP BY sale_date
-            ORDER BY sale_date;
+            ORDER BY sale_date
         """
         self.assertTrue(self.analytics.create_table_from_query("daily_sales_summary", agg_query))
         self.assertIn("daily_sales_summary", self.analytics.list_metadata())
