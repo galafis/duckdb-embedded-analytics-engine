@@ -2,6 +2,7 @@
 import duckdb
 import pandas as pd
 import os
+import json
 from faker import Faker
 import random
 from datetime import datetime, timedelta
