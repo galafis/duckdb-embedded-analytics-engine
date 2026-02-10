@@ -3,10 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![DuckDB](https://img.shields.io/badge/Database-DuckDB-orange?style=for-the-badge&logo=duckdb&logoColor=white)
 ![Pandas](https://img.shields.io/badge/DataFrames-Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
-
-[![Tests](https://github.com/galafis/duckdb-embedded-analytics-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/galafis/duckdb-embedded-analytics-engine/actions/workflows/tests.yml)
 
 ---
 
