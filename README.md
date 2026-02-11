@@ -84,7 +84,6 @@ The main objective of this project is to **provide practical examples, functiona
 | **Serialização**  | CSV, JSON, Parquet | Formatos de arquivo suportados para ingestão e exportação de dados.       |
 | **Parquet Support**| PyArrow        | Biblioteca para leitura/escrita de arquivos Parquet.                      |
 | **Testes**        | pytest          | Framework moderno de testes para Python com cobertura de código.          |
-| **CI/CD**         | GitHub Actions  | Integração contínua e entrega automatizada.                               |
 | **Geração de Dados** | Faker        | Biblioteca para geração de dados sintéticos para testes.                  |
 
 ---
@@ -111,9 +110,6 @@ duckdb-embedded-analytics-engine/
 │   ├── setup.py                 # Project setup script
 │   ├── generate_data.py         # Sample data generator
 │   └── run_tests.py             # Test runner with coverage
-├── .github/
-│   └── workflows/
-│       └── tests.yml            # GitHub Actions CI/CD workflow
 ├── diagrams/                    # Architecture diagrams
 ├── images/                      # Images and screenshots
 ├── .gitignore                   # Git ignore configuration
@@ -326,7 +322,6 @@ O projeto possui cobertura de testes abrangente:
 
 - ✅ 15 testes unitários e de integração
 - ✅ Cobertura de código > 75%
-- ✅ CI/CD automatizado com GitHub Actions
 - ✅ Testes em Python 3.9, 3.10, 3.11 e 3.12
 
 ### Executar Testes Localmente
@@ -467,7 +462,6 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - [DuckDB Documentation](https://duckdb.org/docs/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Python Testing with pytest](https://docs.pytest.org/)
-- [GitHub Actions](https://docs.github.com/en/actions)
 
 ---
 
