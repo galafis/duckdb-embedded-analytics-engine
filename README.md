@@ -83,8 +83,7 @@ The main objective of this project is to **provide practical examples, functiona
 | **DataFrames**    | Pandas          | Biblioteca para manipulação e análise de dados em Python.                 |
 | **Serialização**  | CSV, JSON, Parquet | Formatos de arquivo suportados para ingestão e exportação de dados.       |
 | **Parquet Support**| PyArrow        | Biblioteca para leitura/escrita de arquivos Parquet.                      |
-| **Testes**        | pytest          | Framework moderno de testes para Python com cobertura de código.          |
-| **CI/CD**         | GitHub Actions  | Integração contínua e entrega automatizada.                               |
+| **Testes**        | pytest          | Framework de testes para Python com cobertura de código.                  |
 | **Geração de Dados** | Faker        | Biblioteca para geração de dados sintéticos para testes.                  |
 
 ---
@@ -111,9 +110,6 @@ duckdb-embedded-analytics-engine/
 │   ├── setup.py                 # Project setup script
 │   ├── generate_data.py         # Sample data generator
 │   └── run_tests.py             # Test runner with coverage
-├── .github/
-│   └── workflows/
-│       └── tests.yml            # GitHub Actions CI/CD workflow
 ├── diagrams/                    # Architecture diagrams
 ├── images/                      # Images and screenshots
 ├── .gitignore                   # Git ignore configuration
@@ -324,10 +320,9 @@ Para documentação completa, consulte:
 
 O projeto possui cobertura de testes abrangente:
 
-- ✅ 15 testes unitários e de integração
-- ✅ Cobertura de código > 75%
-- ✅ CI/CD automatizado com GitHub Actions
-- ✅ Testes em Python 3.9, 3.10, 3.11 e 3.12
+- 15 testes unitários e de integração
+- Cobertura do módulo principal (~62%)
+- Testes compatíveis com Python 3.9+
 
 ### Executar Testes Localmente
 
@@ -411,12 +406,11 @@ python scripts/run_tests.py
 
 ## 📊 Performance
 
-DuckDB oferece performance excepcional para queries analíticas:
+DuckDB was designed from the ground up for analytical workloads:
 
-- **10-100x mais rápido** que SQLite em queries analíticas
-- **Processamento vetorizado** para máxima eficiência
-- **Armazenamento colunar** otimizado para agregações
-- **Zero overhead** de rede (in-process)
+- **Vectorized execution** for efficient batch processing
+- **Columnar storage** well-suited for aggregation queries
+- **In-process** — no network overhead
 
 ## 🤝 Contribuição
 
@@ -467,14 +461,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - [DuckDB Documentation](https://duckdb.org/docs/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Python Testing with pytest](https://docs.pytest.org/)
-- [GitHub Actions](https://docs.github.com/en/actions)
 
 ---
 
-<div align="center">
-
-**Se este projeto foi útil, considere dar uma ⭐ no GitHub!**
-
 [⬆ Voltar ao topo](#embedded-analytics-engine-with-duckdb)
-
-</div>

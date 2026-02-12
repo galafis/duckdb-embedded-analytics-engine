@@ -207,7 +207,6 @@ pytest tests/ --cov=src --cov-report=term-missing
 
 - Read the [API Reference](api_reference.md) for detailed documentation
 - Check out the [Use Cases](use_cases.md) for real-world examples
-- Learn about [Performance Optimization](performance.md)
 
 ## 💡 Tips
 

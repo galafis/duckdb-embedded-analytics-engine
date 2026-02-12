@@ -407,6 +407,7 @@ Analyze sensor data from IoT devices locally before sending to cloud.
 ```python
 from src.duckdb_analytics import DuckDBAnalytics
 import pandas as pd
+import numpy as np
 from datetime import datetime
 
 class IoTAnalytics:
