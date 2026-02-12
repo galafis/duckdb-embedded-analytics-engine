@@ -83,7 +83,11 @@ The main objective of this project is to **provide practical examples, functiona
 | **DataFrames**    | Pandas          | Biblioteca para manipulação e análise de dados em Python.                 |
 | **Serialização**  | CSV, JSON, Parquet | Formatos de arquivo suportados para ingestão e exportação de dados.       |
 | **Parquet Support**| PyArrow        | Biblioteca para leitura/escrita de arquivos Parquet.                      |
+<<<<<<< HEAD
 | **Testes**        | pytest          | Framework de testes para Python com cobertura de código.                  |
+=======
+| **Testes**        | pytest          | Framework moderno de testes para Python com cobertura de código.          |
+>>>>>>> 1b63e76be74dadb45b8ffa73d49bc9efe9759cd4
 | **Geração de Dados** | Faker        | Biblioteca para geração de dados sintéticos para testes.                  |
 
 ---
@@ -320,9 +324,15 @@ Para documentação completa, consulte:
 
 O projeto possui cobertura de testes abrangente:
 
+<<<<<<< HEAD
 - 15 testes unitários e de integração
 - Cobertura do módulo principal (~62%)
 - Testes compatíveis com Python 3.9+
+=======
+- ✅ 15 testes unitários e de integração
+- ✅ Cobertura de código > 75%
+- ✅ Testes em Python 3.9, 3.10, 3.11 e 3.12
+>>>>>>> 1b63e76be74dadb45b8ffa73d49bc9efe9759cd4
 
 ### Executar Testes Localmente
 
@@ -464,4 +474,14 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ---
 
+<<<<<<< HEAD
 [⬆ Voltar ao topo](#embedded-analytics-engine-with-duckdb)
+=======
+<div align="center">
+
+**Se este projeto foi útil, considere dar uma ⭐ no GitHub!**
+
+[⬆ Voltar ao topo](#embedded-analytics-engine-with-duckdb)
+
+</div>
+>>>>>>> 1b63e76be74dadb45b8ffa73d49bc9efe9759cd4
