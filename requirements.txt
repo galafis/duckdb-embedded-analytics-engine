@@ -1,6 +1,6 @@
-duckdb
-pandas
-pyarrow
-pytest
-pytest-cov
-faker
+duckdb>=1.4.3
+pandas>=2.1.0
+pyarrow>=14.0.0
+pytest>=7.4.0
+pytest-cov>=4.1.0
+faker>=40.4.0
