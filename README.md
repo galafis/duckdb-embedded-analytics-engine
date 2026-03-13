@@ -5,6 +5,7 @@ Wrapper Python para DuckDB com ingestao de dados, execucao SQL e exportacao CSV.
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB.svg)](https://python.org)
 [![DuckDB](https://img.shields.io/badge/DuckDB-1.0-FFF000.svg)](https://duckdb.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker)](Dockerfile)
 
 [English](#english) | [Portugues](#portugues)
 
